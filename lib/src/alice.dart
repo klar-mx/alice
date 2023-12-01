@@ -19,7 +19,8 @@ class Alice {
   ///method queue will be used to remove elements.
   final int maxCallsCount;
 
-  ///Directionality of app. Directionality of the app will be used if set to null.
+  ///Directionality of app. Directionality of the app will be used if set to
+  /// null.
   final TextDirection? directionality;
 
   ///Flag used to show/hide share button

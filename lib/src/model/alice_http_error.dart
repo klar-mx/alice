@@ -6,7 +6,7 @@ class AliceHttpError {
   final StackTrace? stackTrace;
   final DateTime time;
 
-  AliceHttpError({
+  const AliceHttpError({
     required this.error,
     required this.stackTrace,
     required this.time,

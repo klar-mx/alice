@@ -1,3 +1,4 @@
+// ignore_for_file: cascade_invocations
 import 'dart:async';
 
 import 'package:alice/src/core/alice_logger.dart';
@@ -32,7 +33,7 @@ class AliceCore {
 
   final Brightness _brightness;
   bool _isInspectorOpened = false;
-  StreamSubscription? _callsSubscription;
+  StreamSubscription<dynamic>? _callsSubscription;
 
   /// Creates alice core instance
   AliceCore({
@@ -88,7 +89,7 @@ class AliceCore {
     final selectedCall = _selectCall(requestId);
 
     if (selectedCall == null) {
-      debugPrint("Selected call is null");
+      debugPrint('Selected call is null');
       return;
     }
 
@@ -100,10 +101,10 @@ class AliceCore {
 
   /// Add response to existing alice http call
   void addResponse(AliceHttpResponse response, Object requestId) {
-    final AliceHttpCall? selectedCall = _selectCall(requestId);
+    final selectedCall = _selectCall(requestId);
 
     if (selectedCall == null) {
-      debugPrint("Selected call is null");
+      debugPrint('Selected call is null');
       return;
     }
     selectedCall.loading = false;
