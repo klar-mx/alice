@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
 }
 
 class _ExampleBody extends StatefulWidget {
-  const _ExampleBody({super.key});
+  const _ExampleBody();
 
   @override
   State<_ExampleBody> createState() => _ExampleBodyState();
