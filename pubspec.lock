@@ -45,10 +45,10 @@ packages:
     dependency: "direct main"
     description:
       name: collection
-      sha256: f092b211a4319e98e5ff58223576de6c2803db36221657b46c82574721240687
+      sha256: ee67cb0715911d28db6bf4af1026078bd6f0128b07a5f66fb2ed94ec6783c09a
       url: "https://pub.dev"
     source: hosted
-    version: "1.17.2"
+    version: "1.18.0"
   cross_file:
     dependency: transitive
     description:
@@ -143,10 +143,17 @@ packages:
     dependency: "direct main"
     description:
       name: http
+<<<<<<< Updated upstream
       sha256: "759d1a329847dd0f39226c688d3e06a6b8679668e350e2891a6474f8b4bb8525"
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
+=======
+      sha256: d4872660c46d929f6b8a9ef4e7a7eff7e49bbf0c4ec3f385ee32df5119175139
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.2"
+>>>>>>> Stashed changes
   http_parser:
     dependency: transitive
     description:
@@ -183,10 +190,10 @@ packages:
     dependency: transitive
     description:
       name: meta
-      sha256: "3c74dbf8763d36539f114c799d8a2d87343b5067e9d796ca22b5eb8437090ee3"
+      sha256: a6e590c838b18133bb482a2745ad77c5bb7715fb0451209e1a7567d416678b8e
       url: "https://pub.dev"
     source: hosted
-    version: "1.9.1"
+    version: "1.10.0"
   mime:
     dependency: transitive
     description:
@@ -335,10 +342,25 @@ packages:
     dependency: transitive
     description:
       name: plugin_platform_interface
+<<<<<<< Updated upstream
       sha256: da3fdfeccc4d4ff2da8f8c556704c08f912542c5fb3cf2233ed75372384a034d
       url: "https://pub.dev"
     source: hosted
     version: "2.1.6"
+=======
+      sha256: f4f88d4a900933e7267e2b353594774fc0d07fb072b47eedcd5b54e1ea3269f8
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.7"
+  process:
+    dependency: transitive
+    description:
+      name: process
+      sha256: dc3c073b5bc0db4e0f3dbc6b69f8e9cf2f336dafb3db996242ebdacf94c295dd
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.2.1"
+>>>>>>> Stashed changes
   rxdart:
     dependency: "direct main"
     description:
@@ -391,7 +413,11 @@ packages:
       sha256: "53e943d4206a5e30df338fd4c6e7a077e02254531b138a15aec3bd143c1a8b3c"
       url: "https://pub.dev"
     source: hosted
+<<<<<<< Updated upstream
     version: "1.10.0"
+=======
+    version: "1.8.1"
+>>>>>>> Stashed changes
   sprintf:
     dependency: transitive
     description:
@@ -524,10 +550,10 @@ packages:
     dependency: transitive
     description:
       name: web
-      sha256: dc8ccd225a2005c1be616fe02951e2e342092edf968cf0844220383757ef8f10
+      sha256: afe077240a270dcfd2aafe77602b4113645af95d0ad31128cc02bce5ac5d5152
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.4-beta"
+    version: "0.3.0"
   win32:
     dependency: transitive
     description:
@@ -553,5 +579,10 @@ packages:
     source: hosted
     version: "6.3.0"
 sdks:
+<<<<<<< Updated upstream
   dart: ">=3.1.0 <4.0.0"
   flutter: ">=3.13.0"
+=======
+  dart: ">=3.2.0 <4.0.0"
+  flutter: ">=3.3.0"
+>>>>>>> Stashed changes
