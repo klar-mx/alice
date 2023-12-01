@@ -6,27 +6,18 @@ on:
   workflow_dispatch:
 
 jobs:
-  check-format:
-      name: Check format using flutter format
-      runs-on: ubuntu-latest
-      container: cirrusci/flutter:stable
-
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v2
-        - name: Check format
-          run: flutter format -n --set-exit-if-changed .
-
-  lint:
-    name: Lint
+  check:
     runs-on: ubuntu-latest
-    container: cirrusci/flutter:stable
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Get dependencies for example
-        run: flutter pub get
-        working-directory: example
+      - uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.ORG_SSH_KEY }}
+      - uses: dart-lang/setup-dart@v1.2
+      - uses: actions/checkout@v2
+
+      - name: Check format
+        run: flutter format -n --set-exit-if-changed .
+
       - name: Lint using flutter analyze
         run: flutter analyze
