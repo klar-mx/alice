@@ -12,11 +12,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.13.0
+  http: ^1.1.0
   rxdart: ^0.27.7
 
   package_info_plus: ^4.0.2
-  share_plus: ^4.0.10
+  share_plus: ^7.2.1
   url_launcher: ^6.1.6
 
 dev_dependencies:
