@@ -19,8 +19,4 @@ dependencies:
   url_launcher: ^6.1.6
 
 dev_dependencies:
-  klar_dart_lints:
-    git:
-      url: git@github.com:klar-mx/klar-dart-lints.git
-      ref: 1.11.0
-
+  lint: ^2.1.2
