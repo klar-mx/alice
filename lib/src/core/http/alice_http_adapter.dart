@@ -1,3 +1,4 @@
+// ignore_for_file: cascade_invocations
 import 'dart:convert';
 
 import 'package:alice/src/core/alice_core.dart';
@@ -15,23 +16,23 @@ class AliceHttpAdapter {
   AliceHttpAdapter(this.aliceCore);
 
   void onRequest(http.BaseRequest request, {dynamic body, Object? id}) {
-    final AliceHttpCall call = AliceHttpCall(id ?? request.hashCode);
+    final call = AliceHttpCall(id ?? request.hashCode);
     call.loading = true;
-    call.client = "HttpClient (http package)";
+    call.client = 'HttpClient (http package)';
     call.uri = request.url.toString();
     call.method = request.method;
     var path = request.url.path;
     if (path.isEmpty) {
-      path = "/";
+      path = '/';
     }
     call.endpoint = path;
 
     call.server = request.url.host;
-    if (request.url.scheme == "https") {
+    if (request.url.scheme == 'https') {
       call.secure = true;
     }
 
-    final AliceHttpRequest httpRequest = AliceHttpRequest();
+    final httpRequest = AliceHttpRequest();
 
     if (request is http.Request) {
       // we are guaranteed` the existence of body and headers
@@ -39,12 +40,12 @@ class AliceHttpAdapter {
         httpRequest.body = body;
       }
       // ignore: cast_nullable_to_non_nullable
-      httpRequest.body = body ?? request.body ?? "";
+      httpRequest.body = body ?? request.body ?? '';
       httpRequest.size = utf8.encode(httpRequest.body.toString()).length;
       httpRequest.headers = Map<String, dynamic>.from(request.headers);
     } else if (body == null) {
       httpRequest.size = 0;
-      httpRequest.body = "";
+      httpRequest.body = '';
     } else {
       httpRequest.size = utf8.encode(body.toString()).length;
       httpRequest.body = body;
@@ -52,9 +53,9 @@ class AliceHttpAdapter {
 
     httpRequest.time = DateTime.now();
 
-    String? contentType = "unknown";
-    if (httpRequest.headers.containsKey("Content-Type")) {
-      contentType = httpRequest.headers["Content-Type"] as String?;
+    String? contentType = 'unknown';
+    if (httpRequest.headers.containsKey('Content-Type')) {
+      contentType = httpRequest.headers['Content-Type'] as String?;
     }
 
     httpRequest.contentType = contentType;
@@ -77,9 +78,9 @@ class AliceHttpAdapter {
       httpResponse.size = utf8.encode((body ?? '').toString()).length;
     }
     httpResponse.time = DateTime.now();
-    final Map<String, String> responseHeaders = {};
+    final responseHeaders = <String, String>{};
     response.headers.forEach((header, values) {
-      responseHeaders[header] = values.toString();
+      responseHeaders[header] = values;
     });
     httpResponse.headers = responseHeaders;
     aliceCore.addResponse(httpResponse, id ?? response.hashCode);

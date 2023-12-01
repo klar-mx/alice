@@ -1,3 +1,4 @@
+// ignore_for_file: cascade_invocations, avoid_dynamic_calls
 import 'package:alice/src/helper/alice_conversion_helper.dart';
 import 'package:alice/src/model/alice_http_call.dart';
 import 'package:alice/src/model/alice_http_response.dart';
@@ -11,7 +12,7 @@ class AliceCallListItemWidget extends StatelessWidget {
   final AliceHttpCall call;
   final Function itemClickAction;
 
-  const AliceCallListItemWidget(this.call, this.itemClickAction);
+  const AliceCallListItemWidget(this.call, this.itemClickAction, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,22 +33,22 @@ class AliceCallListItemWidget extends StatelessWidget {
                       const SizedBox(height: 4),
                       _buildServerRow(),
                       const SizedBox(height: 4),
-                      _buildStatsRow()
+                      _buildStatsRow(),
                     ],
                   ),
                 ),
-                _buildResponseColumn(context)
+                _buildResponseColumn(context),
               ],
             ),
           ),
-          _buildDivider()
+          _buildDivider(),
         ],
       ),
     );
   }
 
   Widget _buildMethodAndEndpointRow(BuildContext context) {
-    final Color? textColor = _getEndpointTextColor(context);
+    final textColor = _getEndpointTextColor(context);
     return Row(
       children: [
         Text(
@@ -70,7 +71,7 @@ class AliceCallListItemWidget extends StatelessWidget {
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }
@@ -111,11 +112,11 @@ class AliceCallListItemWidget extends StatelessWidget {
         ),
         Flexible(
           child: Text(
-            "${AliceConversionHelper.formatBytes(call.request!.size)} / "
-            "${AliceConversionHelper.formatBytes(call.response!.size)}",
+            '${AliceConversionHelper.formatBytes(call.request!.size)} / '
+            '${AliceConversionHelper.formatBytes(call.response!.size)}',
             style: const TextStyle(fontSize: 12),
           ),
-        )
+        ),
       ],
     );
   }
@@ -125,18 +126,18 @@ class AliceCallListItemWidget extends StatelessWidget {
   }
 
   String _formatTime(DateTime time) {
-    return "${formatTimeUnit(time.hour)}:"
-        "${formatTimeUnit(time.minute)}:"
-        "${formatTimeUnit(time.second)}:"
-        "${formatTimeUnit(time.millisecond)}";
+    return '${formatTimeUnit(time.hour)}:'
+        '${formatTimeUnit(time.minute)}:'
+        '${formatTimeUnit(time.second)}:'
+        '${formatTimeUnit(time.millisecond)}';
   }
 
   String formatTimeUnit(int timeUnit) {
-    return (timeUnit < 10) ? "0$timeUnit" : "$timeUnit";
+    return (timeUnit < 10) ? '0$timeUnit' : '$timeUnit';
   }
 
   Widget _buildResponseColumn(BuildContext context) {
-    final List<Widget> widgets = [];
+    final widgets = <Widget>[];
     if (call.loading) {
       widgets.add(
         SizedBox(
@@ -162,7 +163,7 @@ class AliceCallListItemWidget extends StatelessWidget {
         ),
       ),
     );
-    return Container(
+    return SizedBox(
       width: 50,
       child: Column(
         children: widgets,
@@ -171,7 +172,7 @@ class AliceCallListItemWidget extends StatelessWidget {
   }
 
   Color? _getStatusTextColor(BuildContext context) {
-    final int? status = call.response!.status;
+    final status = call.response!.status;
     if (status == -1) {
       return AliceConstants.red;
     } else if (status! < 200) {
@@ -197,11 +198,11 @@ class AliceCallListItemWidget extends StatelessWidget {
 
   String _getStatus(AliceHttpResponse response) {
     if (response.status == -1) {
-      return "ERR";
+      return 'ERR';
     } else if (response.status == 0) {
-      return "???";
+      return '???';
     } else {
-      return "${response.status}";
+      return '${response.status}';
     }
   }
 

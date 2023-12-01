@@ -1,3 +1,5 @@
+// ignore_for_file: cascade_invocations, avoid_dynamic_calls
+
 import 'package:flutter/material.dart';
 
 class AliceAlertHelper {
@@ -6,13 +8,13 @@ class AliceAlertHelper {
     BuildContext context,
     String title,
     String description, {
-    String firstButtonTitle = "Accept",
+    String firstButtonTitle = 'Accept',
     String? secondButtonTitle,
     Function? firstButtonAction,
     Function? secondButtonAction,
     Brightness? brightness,
   }) {
-    final List<Widget> actions = [];
+    final actions = <Widget>[];
     actions.add(
       TextButton(
         onPressed: () {
